@@ -1,0 +1,17 @@
+body {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  min-width: 440px;
+}
+
+#title-display {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-weight: normal;
+}
+
+p {
+  font-size: 0.8em;
+}
