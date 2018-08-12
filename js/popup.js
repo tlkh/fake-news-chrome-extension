@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             title_display.innerHTML = json.article_title;
 
+
+            // claimReview
             var claimReview = json.claimReview;
             var num_claimReview = claimReview.titles.length;
             var claimReview_listing = "";
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 for (i = 0; i < num_claimReview; i++) {
                     claimReview_listing += "<h6 class='card-title'>" + claimReview.titles[i] + "</h6>";
                     claimReview_listing += '<p class="card-text"><b>' + claimReview.authors[i] + "</b> on " + claimReview.dates[i] + "</p>";
-                    claimReview_listing += '<a href="#' + claimReview.urls[i] + '" class="card-link">View Fact Check</a>';
+                    claimReview_listing += '<a href="' + claimReview.urls[i] + '" class="card-link" target="_blank">View Fact Check</a>';
                     if (i < num_claimReview - 1) {
                         claimReview_listing += '<hr>'
                     }
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             claimReview_display.innerHTML = claimReview_listing;
 
 
+            // clickbait
             clickbait_display.innerHTML = json.clickbait;
             if (json.clickbait == "clickbait") {
                 clickbait_prompt.innerHTML = "Headline appears to be written to attract more views"
@@ -86,9 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            // article style (profile)
             profile_display.innerHTML = json.article_profile;
-            // ["fake", "satire", "bias", "conspiracy", "state", "junksci", "hate", "clickbait", "unreliable", "political", "reliable"]
-            if (json.article_profile == "unreliable" || json.article_profile == "fake" || json.article_profile == "junksci" || json.article_profile == "hate") {
+            if (json.article_profile == "unreliable" || json.article_profile == "fake" || json.article_profile == "junk science" || json.article_profile == "hate") {
                 try {
                     profile_display.classList.remove("badge-success");
                     profile_display.classList.remove("badge-warning");
@@ -99,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     profile_prompt.innerHTML = "Article writing style matches: " + json.article_profile.toString(); + "<br><b>Please verify facts presented</b>"
                 }
             } else {
-                if (json.article_profile == "conspiracy" || json.article_profile == "bias" || json.article_profile == "state" || json.article_profile == "political" || json.article_profile == "clickbait") {
+                if (json.article_profile == "conspiracy" || json.article_profile == "opinion piece" || json.article_profile == "state" || json.article_profile == "political" || json.article_profile == "clickbait") {
                     try {
                         profile_display.classList.remove("badge-danger");
                         profile_display.classList.remove("badge-success");
@@ -122,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            // article toxicity
             var bool = json.article_toxic.indexOf("none");
             if (bool < 0 || json.article_toxic.length > 1) {
                 var index = json.article_toxic.indexOf("none");
@@ -137,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 toxic_display.classList.remove("badge-danger");
             }
 
+            // article subjectivity
             var subj_scores = json.article_subjectivity
             if (subj_scores[0] < subj_scores[1]) {
                 //  objective < subjective
