@@ -49,17 +49,22 @@ document.addEventListener('DOMContentLoaded', function () {
             var num_claimReview = claimReview.titles.length;
             var claimReview_listing = "";
             if (num_claimReview > 0) {
+                claimReview_display.style.display = '';
                 var i;
                 claimReview_listing = ""
                 for (i = 0; i < num_claimReview; i++) {
                     claimReview_listing += "<h6 class='card-title'>" + claimReview.titles[i] + "</h6>";
-                    claimReview_listing += '<p class="card-text"><b>' + claimReview.authors[i] + "</b> on " + claimReview.dates[i] + "</p>";
+                    console.log(claimReview.verdicts[i])
+                    if (claimReview.verdicts[i] == "True" || claimReview.verdicts[i] == "Mostly True" || claimReview.verdicts[i] == "Half True") {
+                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-success">' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
+                    } else {
+                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-danger">' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
+                    }
                     claimReview_listing += '<a href="' + claimReview.urls[i] + '" class="card-link" target="_blank">View Fact Check</a>';
                     if (i < num_claimReview - 1) {
                         claimReview_listing += '<hr>'
                     }
                 }
-                claimReview_display.style.display = '';
             } else {
                 claimReview_display.style.display = 'none';
                 claimReview_display.innerHTML = "";
