@@ -24,12 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var domain_display = document.getElementById("domain-display");
         var clickbait_display = document.getElementById("clickbait-display");
         var profile_display = document.getElementById("profile-display");
-        var toxic_display = document.getElementById("toxic-display")
-        var subj_display = document.getElementById("subj-display")
+        var toxic_display = document.getElementById("toxic-display");
+        var subj_display = document.getElementById("subj-display");
         var debug_display = document.getElementById("debug-display");
 
-        var clickbait_prompt = document.getElementById("clickbait-prompt")
-        var profile_prompt = document.getElementById("profile-prompt")
+        var clickbait_prompt = document.getElementById("clickbait-prompt");
+        var profile_prompt = document.getElementById("profile-prompt");
+
+        var claimReview_display = document.getElementById("claimReviewDisplay");
 
         domain_display.innerHTML = page_domain;
 
@@ -40,6 +42,28 @@ document.addEventListener('DOMContentLoaded', function () {
             debug_display.innerHTML = this.responseText;
 
             title_display.innerHTML = json.article_title;
+
+            var claimReview = json.claimReview;
+            var num_claimReview = claimReview.titles.length;
+            var claimReview_listing = "";
+            if (num_claimReview > 0) {
+                var i;
+                claimReview_listing = ""
+                for (i = 0; i < num_claimReview; i++) {
+                    claimReview_listing += "<h6 class='card-title'>" + claimReview.titles[i] + "</h6>";
+                    claimReview_listing += '<p class="card-text"><b>' + claimReview.authors[i] + "</b> on " + claimReview.dates[i] + "</p>";
+                    claimReview_listing += '<a href="#' + claimReview.urls[i] + '" class="card-link">View Fact Check</a>';
+                    if (i < num_claimReview - 1) {
+                        claimReview_listing += '<hr>'
+                    }
+                }
+                claimReview_display.style.display = '';
+            } else {
+                claimReview_display.style.display = 'none';
+                claimReview_display.innerHTML = "";
+            }
+            claimReview_display.innerHTML = claimReview_listing;
+
 
             clickbait_display.innerHTML = json.clickbait;
             if (json.clickbait == "clickbait") {
