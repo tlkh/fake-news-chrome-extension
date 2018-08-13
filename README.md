@@ -9,26 +9,35 @@ To create a tool that can assist members of the public to be more vigilant in th
 * Alert the user of clickbait, subjective or "toxic" content
 * Suggest related fact-check ["ClaimReview" articles](https://www.datacommons.org/docs/faq.html#0)
 
-### When it works
+## When it works
 
-![screenshot](readme_imgs/screenshot_6.png)
-![screenshot](readme_imgs/screenshot_5.png)
-![screenshot](readme_imgs/screenshot_8.png)
-![screenshot](readme_imgs/screenshot_9.png)
-![screenshot](readme_imgs/screenshot_10.png)
-![screenshot](readme_imgs/screenshot_2.png)
+### Fact Checking
 
-We are not biased towards "official" media
-![screenshot](readme_imgs/screenshot_3.png)
+Here's an article on Trump
+![screenshot](readme_imgs/trump_1.png)
+
+Clicking on "View Fact Check" brings you to
+![screenshot](readme_imgs/trump_2.png)
+
+**Other examples**
+![screenshot](readme_imgs/hiv_cadbury.png)
+![screenshot](readme_imgs/mccain_carrier.png)
+
+### Article Quality
+
+![screenshot](readme_imgs/bbc.png)
+![screenshot](readme_imgs/reuters.png)
+
+![screenshot](readme_imgs/cna_clickbait.png)
+![screenshot](readme_imgs/robbers_msiacustom.png)
 
 It was hard to find "toxic" content, so here is a Reddit post as an example
-![screenshot](readme_imgs/screenshot_1.png)
+![screenshot](readme_imgs/ndp_toxic.png)
 
-### When it doesn't work
+## When it doesn't work
 
-![screenshot](readme_imgs/screenshot_4.png) 
-
-![screenshot](readme_imgs/screenshot_7.png)
+![screenshot](readme_imgs/str_ccs_fail.png) 
+![screenshot](readme_imgs/snope_halal_fail.png)
 
 
 ## Technology Stack
