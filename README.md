@@ -40,6 +40,8 @@ It was hard to find "toxic" content, so here is a Reddit post as an example
 * ![screenshot](readme_imgs/str_ccs_fail.png) 
 * ![screenshot](readme_imgs/snope_halal_fail.png)
 
+Many Singapore fact-checks, even those that are on Snopes, are **not in the DataCommons** database.
+
 ## Technology Stack
 
 Backend Endpoint API: 
