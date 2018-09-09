@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var domain_display = document.getElementById("domain-display");
         var clickbait_display = document.getElementById("clickbait-display");
         var profile_display = document.getElementById("profile-display");
-        var toxic_display = document.getElementById("toxic-display");
         var subj_display = document.getElementById("subj-display");
         var debug_display = document.getElementById("debug-display");
 
@@ -54,11 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 claimReview_listing = ""
                 for (i = 0; i < num_claimReview; i++) {
                     claimReview_listing += "<h6 class='card-title'>" + claimReview.titles[i] + "</h6>";
-                    console.log(claimReview.verdicts[i])
                     if (claimReview.verdicts[i] == "True" || claimReview.verdicts[i] == "Mostly True" || claimReview.verdicts[i] == "Half True") {
-                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-success">' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
+                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-success">VERDICT: ' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
                     } else {
-                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-danger">' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
+                        claimReview_listing += '<p class="card-subtitle mb-2"><span class="badge badge-pill badge-danger">VERDICT: ' + claimReview.verdicts[i] + '</span> <b>' + claimReview.authors[i] + "</b> <span class = 'text-muted'>" + claimReview.dates[i] + "</span></p>";
                     }
                     claimReview_listing += '<a href="' + claimReview.urls[i] + '" class="card-link" target="_blank">View Fact Check</a>';
                     if (i < num_claimReview - 1) {
@@ -128,22 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         profile_prompt.innerHTML = "Article appears to be written in a reliable manner"
                     }
                 }
-            }
-
-            // article toxicity
-            var bool = json.article_toxic.indexOf("none");
-            if (bool < 0 || json.article_toxic.length > 1) {
-                var index = json.article_toxic.indexOf("none");
-                if (index > -1) {
-                    json.article_toxic.splice(index, 1);
-                }
-                toxic_display.style.display = '';
-                toxic_display.innerHTML = json.article_toxic.join(", ");
-                toxic_display.classList.add("badge-danger");
-                profile_prompt.innerHTML = profile_prompt.innerHTML.toString() + "<br><b>Hateful content detected</b>"
-            } else {
-                toxic_display.style.display = 'none';
-                toxic_display.classList.remove("badge-danger");
             }
 
             // article subjectivity

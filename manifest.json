@@ -1,6 +1,6 @@
 {
   "name" : "Fake News Chrome Extension",
-  "version" : "0.3",
+  "version" : "0.4",
   "description" : "MVP - SUTD",
   "permissions": [
     "tabs",
