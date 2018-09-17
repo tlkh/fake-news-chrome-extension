@@ -17,7 +17,7 @@ To create a tool that can assist members of the public to be more vigilant in th
   ![screenshot](readme_imgs/screenshot_6.png)
 
 * Clicking on "View Fact Check" brings you to
-  ![screenshot](screenshot_5.png)
+  ![screenshot](readme_imgs/screenshot_5.png)
 
 Unfortunately, many Singapore fact-checks, even those that are on Snopes, are **not in the DataCommons** database.
 
